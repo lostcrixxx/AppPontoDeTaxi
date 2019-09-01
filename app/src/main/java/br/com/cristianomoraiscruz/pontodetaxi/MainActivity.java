@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
         btnSobre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(getBaseContext(), SobreActivity.class);
-//                startActivity(i);
-                Toast.makeText(getApplication(), "Click: Sobre", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), SobreActivity.class);
+                startActivity(i);
+//                Toast.makeText(getApplication(), "Click: Sobre", Toast.LENGTH_SHORT).show();
             }
         });
     }
