@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">AppPontoDeTaxi</string>
+    <string name="app_name">Ponto de Táxi</string>
+    <string name="splash">Gerenciando nosso Ponto</string>
+    <string name="action_settings">Configurações</string>
+
+    <string name="navigation_drawer_open">Abre menu</string>
+    <string name="navigation_drawer_close">Fecha menu</string>
+
+    <string name="action_about">Sobre</string>
+    <string name="nome">Criado por Cristiano M.</string>
+    <string name="email">devcristianomorais@gmail.com</string>
+
+    <string name="title_activity_principal">Ponto de Táxi</string>
+    <string name="title_activity_adicionar">Adicionar Dados</string>
+    <string name="title_activity_editar">Editar Dados</string>
+    <string name="title_activity_sobre">Sobre</string>
+
+    <string name="title_home">Página Inicial</string>
+    <string name="title_dashboard">Adicionar</string>
+    <string name="title_notifications">Informações</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+
 </resources>
