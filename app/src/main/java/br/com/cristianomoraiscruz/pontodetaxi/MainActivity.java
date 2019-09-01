@@ -1,14 +1,12 @@
 package br.com.cristianomoraiscruz.pontodetaxi;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Taxista", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), ListActivity.class);
+                startActivity(i);
+//                Toast.makeText(getApplication(), "Click: Taxista", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
         btnSobre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent(getBaseContext(), SobreActivity.class);
-//                startActivity(i);
-                Toast.makeText(getApplication(), "Click: Sobre", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), SobreActivity.class);
+                startActivity(i);
+//                Toast.makeText(getApplication(), "Click: Sobre", Toast.LENGTH_SHORT).show();
             }
         });
     }

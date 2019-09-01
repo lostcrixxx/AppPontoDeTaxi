@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ListActivity"
+            android:label="Lista de Taxistas"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".SobreActivity"
+            android:label="Sobre"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
-
 </manifest>
