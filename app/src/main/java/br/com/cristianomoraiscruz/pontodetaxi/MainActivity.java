@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Taxista", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), ListActivity.class);
+                startActivity(i);
+//                Toast.makeText(getApplication(), "Click: Taxista", Toast.LENGTH_SHORT).show();
             }
         });
 
