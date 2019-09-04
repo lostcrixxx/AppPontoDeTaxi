@@ -8,6 +8,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     CardView btnTaxi, btnLista, btnPlaca, btnCombustivel, btnDetran, btnSobre;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getBaseContext(), ListActivity.class);
+                Intent i = new Intent(getBaseContext(), AddActivity.class);
                 startActivity(i);
 //                Toast.makeText(getApplication(), "Click: Taxista", Toast.LENGTH_SHORT).show();
             }
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         btnLista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Lista", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), ListActivity.class);
+                startActivity(i);
             }
         });
 
