@@ -1,8 +1,11 @@
 package br.com.cristianomoraiscruz.pontodetaxi;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +13,16 @@ import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences prefs;
+    TextView txtNPonto;
     CardView btnTaxi, btnExtrato, btnConfig, btnCombustivel, btnDetran, btnSobre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        txtNPonto = findViewById(R.id.txtNPonto);
 
         btnTaxi = findViewById(R.id.btnTaxi);
         btnExtrato = findViewById(R.id.btnExtrato);
@@ -24,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         btnConfig = findViewById(R.id.btnConfig);
         btnSobre = findViewById(R.id.btnSobre);
+
+        prefs = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
+        txtNPonto.setText(prefs.getString("nPonto", "Não encontrado"));
 
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
