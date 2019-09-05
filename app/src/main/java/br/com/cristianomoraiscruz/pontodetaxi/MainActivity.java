@@ -8,24 +8,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    CardView btnTaxi, btnLista, btnPlaca, btnCombustivel, btnDetran, btnSobre;
+    CardView btnTaxi, btnExtrato, btnConfig, btnCombustivel, btnDetran, btnSobre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnTaxi = findViewById(R.id.btn1);
-        btnLista = findViewById(R.id.btn2);
-        btnPlaca = findViewById(R.id.btn3);
-        btnCombustivel = findViewById(R.id.btn4);
-        btnDetran = findViewById(R.id.btn5);
+        btnTaxi = findViewById(R.id.btnTaxi);
+        btnExtrato = findViewById(R.id.btnExtrato);
+        btnCombustivel = findViewById(R.id.btnCombustivel);
+        btnDetran = findViewById(R.id.btnDetran);
 
-        btnSobre = findViewById(R.id.btn6);
+        btnConfig = findViewById(R.id.btnConfig);
+        btnSobre = findViewById(R.id.btnSobre);
 
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLista.setOnClickListener(new View.OnClickListener() {
+        btnExtrato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getBaseContext(), ListActivity.class);
@@ -44,12 +42,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnPlaca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Placa", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         btnCombustivel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplication(), "Click: Detran", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), ConfigActivity.class);
+                startActivity(i);
             }
         });
 
