@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnSobre = findViewById(R.id.btnSobre);
 
         prefs = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
-        txtNPonto.setText(prefs.getString("nPonto", "Não encontrado"));
+        txtNPonto.setText(prefs.getString("nPonto", "Configure o N. do Ponto"));
 
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
         btnCombustivel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Combustivel", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção... ", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnDetran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Detran", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção...", Toast.LENGTH_SHORT).show();
             }
         });
 
