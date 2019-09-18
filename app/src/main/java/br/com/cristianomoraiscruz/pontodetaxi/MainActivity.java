@@ -1,31 +1,39 @@
 package br.com.cristianomoraiscruz.pontodetaxi;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    CardView btnTaxi, btnLista, btnPlaca, btnCombustivel, btnDetran, btnSobre;
+    SharedPreferences prefs;
+    TextView txtNPonto;
+    CardView btnTaxi, btnExtrato, btnConfig, btnCombustivel, btnDetran, btnSobre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnTaxi = findViewById(R.id.btn1);
-        btnLista = findViewById(R.id.btn2);
-        btnPlaca = findViewById(R.id.btn3);
-        btnCombustivel = findViewById(R.id.btn4);
-        btnDetran = findViewById(R.id.btn5);
+        txtNPonto = findViewById(R.id.txtNPonto);
 
-        btnSobre = findViewById(R.id.btn6);
+        btnTaxi = findViewById(R.id.btnTaxi);
+        btnExtrato = findViewById(R.id.btnExtrato);
+        btnCombustivel = findViewById(R.id.btnCombustivel);
+        btnDetran = findViewById(R.id.btnDetran);
+
+        btnConfig = findViewById(R.id.btnConfig);
+        btnSobre = findViewById(R.id.btnSobre);
+
+        prefs = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
+        txtNPonto.setText(prefs.getString("nPonto", "Configure o N. do Ponto"));
 
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLista.setOnClickListener(new View.OnClickListener() {
+        btnExtrato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getBaseContext(), ListActivity.class);
@@ -44,24 +52,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnPlaca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Placa", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         btnCombustivel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Combustivel", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção... ", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnDetran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Click: Detran", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), ConfigActivity.class);
+                startActivity(i);
             }
         });
 

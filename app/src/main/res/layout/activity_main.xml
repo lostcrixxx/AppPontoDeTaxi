@@ -20,7 +20,7 @@
             android:layout_marginEnd="20dp">
 
             <TextView
-                android:id="@+id/txtDashboard"
+                android:id="@+id/txtNPonto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ponto de Táxi: N° 0000"
@@ -30,15 +30,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtDashboard"
+                android:layout_below="@id/txtNPonto"
                 android:layout_marginTop="6dp"
-                android:text="12 taxistas"
+                android:text="taxistas"
                 android:textColor="#52BAFF"
                 android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="62dp"
-
                 android:layout_height="62dp"
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
@@ -52,7 +51,7 @@
             android:rowCount="6">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn1"
+                android:id="@+id/btnTaxi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -72,7 +71,7 @@
 
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/contact" />
+                        android:src="@drawable/event" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,7 +85,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn2"
+                android:id="@+id/btnExtrato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -105,22 +104,21 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/contact" />
+                        android:src="@drawable/report" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Lista"
+                        android:text="Taxistas"
                         android:textColor="#6F6F6F"
                         android:textSize="18sp" />
-
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn3"
+                android:id="@+id/btnCombustivel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -139,55 +137,20 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/contact" />
+                        android:src="@drawable/optimization" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Placa"
+                        android:text="Abastecer"
                         android:textColor="#6F6F6F"
                         android:textSize="18sp" />
-
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/contact" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="Combustível"
-                        android:textColor="#6F6F6F"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/btn5"
+                android:id="@+id/btnDetran"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -216,12 +179,11 @@
                         android:textColor="#6F6F6F"
                         android:textSize="18sp" />
 
-
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn6"
+                android:id="@+id/btnConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -240,7 +202,41 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/contact" />
+                        android:src="@drawable/config" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Config."
+                        android:textColor="#6F6F6F"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnSobre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/about" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -249,7 +245,6 @@
                         android:text="Sobre"
                         android:textColor="#6F6F6F"
                         android:textSize="18sp" />
-
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

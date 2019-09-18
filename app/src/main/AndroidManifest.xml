@@ -28,5 +28,9 @@
             android:label="Sobre"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".ConfigActivity"
+            android:label="Configurações"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 </manifest>
