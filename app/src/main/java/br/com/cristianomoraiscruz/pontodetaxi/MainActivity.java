@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,5 +87,39 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(getApplication(), "Click: Sobre", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        switch(id){
+            case R.id.settings_sobre:
+                Log.d("MainActivity", "sobre");
+                Intent iSobre = new Intent(this, SobreActivity.class);
+                startActivity(iSobre);
+            break;
+            case R.id.settings_config:
+                Log.d("MainActivity", "configurações");
+                Intent iConfig = new Intent(this, ConfigActivity.class);
+                startActivity(iConfig);
+            break;
+            case R.id.settings_sair:
+                Log.d("MainActivity", "sair");
+                finish();
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
