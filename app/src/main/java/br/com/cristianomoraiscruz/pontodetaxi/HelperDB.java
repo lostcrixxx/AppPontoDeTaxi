@@ -17,7 +17,7 @@ public class HelperDB extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "db_pontotaxi";   //nome do BD
 
     private static final String TABLE_CREATE10 = "create table " + TAB_CONTATO +
-            " (nome String PRIMARY KEY, celular String, email String);";
+            " (nome String PRIMARY KEY, placa String, valor String, celular String, email String);";
 
     private static final String TABLE_CREATE1 = "create table " + TAB_PONTO +
             " (id Integer, numPonto Integer PRIMARY KEY, telefone1 Text, telefone2 Text, endereco Text, email Text, site Text);";
@@ -42,6 +42,7 @@ public class HelperDB extends SQLiteOpenHelper {
 //        db.execSQL(TABLE_CREATE2);
 //        db.execSQL(TABLE_CREATE3);
 //        db.execSQL(TABLE_CREATE4);
+
         db.execSQL(TABLE_CREATE10);
     }
 

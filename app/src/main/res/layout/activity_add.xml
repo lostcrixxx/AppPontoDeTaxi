@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_person_black_24dp"
-                android:hint="Nome" />
+                android:hint="Nome *" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -35,6 +35,52 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Placa: "
+            android:textAppearance="?android:attr/textAppearanceLarge">
+
+            <EditText
+                android:id="@+id/placa"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:hint="Placa *"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Valor: "
+            android:textAppearance="?android:attr/textAppearanceLarge">
+
+            <EditText
+                android:id="@+id/value"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:hint="Valor *"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -57,7 +103,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textView3"
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -72,6 +118,20 @@
                 android:drawableStart="@drawable/ic_email_black_24dp"
                 android:hint="Email"/>
         </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/obrigatorio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="* Campo obrigatório"/>
+
     </LinearLayout>
 
     <LinearLayout

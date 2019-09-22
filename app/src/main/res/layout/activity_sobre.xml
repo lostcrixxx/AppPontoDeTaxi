@@ -38,23 +38,24 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="103dp"
-        android:text="Criado por Cristiano M." />
+    <!--<TextView-->
+        <!--android:id="@+id/textView7"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="103dp"-->
+        <!--android:text="Criado por Cristiano M." />-->
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="Email: devcristianomorais@gmail.com" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView8"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignTop="@+id/textView7"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="26dp"-->
+        <!--android:text="Email: devcristianomorais@gmail.com" />-->
+
 <!--
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
