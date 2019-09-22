@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,31 +77,31 @@ public class AddActivity extends AppCompatActivity {
         }
     }
 
-    public void listar(View v){
-        HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
-        SQLiteDatabase bdr1 = null;
-        String str= "\nContatos cadastrados\n\n";
-        try {
-            Context ctx = this;  // ou: Context ctx = v.getContext(); dentro de onClick
-            ch1 = new HelperDB(ctx);
-            bdr1 = ch1.getReadableDatabase();
-            Cursor cursor = bdr1.query("contatos", null, null, null, null, null, null);
-            // ou Cursor cursor = bdr.rawQuery("select * from contatos", null);
-            while (cursor.moveToNext()) {
-                String nom = cursor.getString(0);
-                String cel = cursor.getString(1);
-                String em = cursor.getString(2);
-                str += nom + ", "  + cel + ", "  + em + "\n\n";
-            }
-            ((TextView)findViewById(R.id.lista)).setText(str);
-        } catch (Exception ex) {
-            Toast.makeText(getApplicationContext(), "\nErro processando o BD.\n", Toast.LENGTH_LONG).show();
-        }
-        finally {
-            if(bdr1!=null) bdr1.close();
-            if(ch1!=null) ch1.close();
-        }
-    }
+//    public void listar(View v){
+//        HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
+//        SQLiteDatabase bdr1 = null;
+//        String str= "\nContatos cadastrados\n\n";
+//        try {
+//            Context ctx = this;  // ou: Context ctx = v.getContext(); dentro de onClick
+//            ch1 = new HelperDB(ctx);
+//            bdr1 = ch1.getReadableDatabase();
+//            Cursor cursor = bdr1.query("contatos", null, null, null, null, null, null);
+//            // ou Cursor cursor = bdr.rawQuery("select * from contatos", null);
+//            while (cursor.moveToNext()) {
+//                String nom = cursor.getString(0);
+//                String cel = cursor.getString(1);
+//                String em = cursor.getString(2);
+//                str += nom + ", "  + cel + ", "  + em + "\n\n";
+//            }
+//            ((TextView)findViewById(R.id.lista)).setText(str);
+//        } catch (Exception ex) {
+//            Toast.makeText(getApplicationContext(), "\nErro processando o BD.\n", Toast.LENGTH_LONG).show();
+//        }
+//        finally {
+//            if(bdr1!=null) bdr1.close();
+//            if(ch1!=null) ch1.close();
+//        }
+//    }
 
     public void gravar1(View v){
         HelperDB ch = null;  // a classe derivada de SQLiteOpenHelper
@@ -134,31 +135,42 @@ public class AddActivity extends AppCompatActivity {
         }
     }
 
-    public void gravar2(View v){
+    public void saveTaxista(View v){
         HelperDB ch = null;  // a classe derivada de SQLiteOpenHelper
         SQLiteDatabase bdw = null;
         try {
             ch = new HelperDB(getApplicationContext());
             bdw = ch.getWritableDatabase();
-            EditText nome = (EditText) findViewById(R.id.nome);
-            EditText celular = (EditText) findViewById(R.id.cel);
-            EditText email = (EditText) findViewById(R.id.email);
-            String n = nome.getText().toString();
-            String c = celular.getText().toString();
-            String e = email.getText().toString();
-            if(n.isEmpty() || c.isEmpty() || e.isEmpty()) {
+            EditText edtNome = (EditText) findViewById(R.id.nome);
+            EditText edtCelular = (EditText) findViewById(R.id.cel);
+            EditText edtEmail = (EditText) findViewById(R.id.email);
+            String lblNome = edtNome.getText().toString();
+            String lblCelular = edtCelular.getText().toString();
+            String lblEmail = edtEmail.getText().toString();
+            if(lblNome.isEmpty() || lblCelular.isEmpty() || lblEmail.isEmpty()) {
                 Toast.makeText(getApplicationContext(),
                         "Por favor, preencha os dados.",Toast.LENGTH_LONG).show();
             }
             else {
                 ContentValues cv = new ContentValues();
-                cv.put("nome", n);
-                cv.put("celular", c);
-                cv.put("email", e);
+                cv.put("nome", lblNome);
+                cv.put("celular", lblCelular);
+                cv.put("email", lblEmail);
                 long id = bdw.insert("contatos", null, cv);
-                if(id == -1) {
-                    Toast.makeText(getApplicationContext(), "\nNão foi possível inserir. Nome duplicado?\n",
+                Log.d("AddActivity", "teste db value id: " + id);
+                if(id > 0){
+                    Toast.makeText(getApplicationContext(), "Taxista cadastrado com sucesso!",
                             Toast.LENGTH_LONG).show();
+                    edtNome.setText("");
+                    edtCelular.setText("");
+                    edtEmail.setText("");
+                } else if(id == -1) {
+                    Toast.makeText(getApplicationContext(), "Não foi possível inserir. Nome duplicado!",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Não foi possível inserir. Erro!",
+                            Toast.LENGTH_LONG).show();
+                    Log.e("AddActivity", "Erro ao inserir taxista");
                 }
             }
         } catch (Exception ex) {
