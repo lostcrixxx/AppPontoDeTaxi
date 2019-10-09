@@ -1,9 +1,11 @@
-package br.com.cristianomoraiscruz.pontodetaxi;
+package br.com.cristianomoraiscruz.pontodetaxi.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+
+import br.com.cristianomoraiscruz.pontodetaxi.R;
 
 public class SplashActivity extends AppCompatActivity {
 
