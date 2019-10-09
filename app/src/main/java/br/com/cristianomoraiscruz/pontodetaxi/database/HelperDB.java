@@ -1,4 +1,4 @@
-package br.com.cristianomoraiscruz.pontodetaxi;
+package br.com.cristianomoraiscruz.pontodetaxi.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,7 +31,7 @@ public class HelperDB extends SQLiteOpenHelper {
 //    private static final String TABLE_CREATE4 = "create table " + TAB_CONTA +
 //            " (nome String PRIMARY KEY, celular String, email String);";
 
-    HelperDB(Context context) {
+    public HelperDB(Context context) {
 
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

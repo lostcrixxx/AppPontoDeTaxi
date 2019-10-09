@@ -9,28 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActivity"
+        <activity android:name=".view.AddTaxistaActivity"
             android:label="Adicionar Taxista"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".view.MainActivity">
         </activity>
-        <activity android:name=".ListActivity"
+        <activity android:name=".view.ListActivity"
             android:label="Lista de Taxistas"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".view.MainActivity">
         </activity>
-        <activity android:name=".SobreActivity"
+        <activity android:name=".view.SobreActivity"
             android:label="Sobre"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".view.MainActivity">
         </activity>
-        <activity android:name=".ConfigActivity"
+        <activity android:name=".view.ConfigActivity"
             android:label="Configurações"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".view.MainActivity">
         </activity>
     </application>
 </manifest>

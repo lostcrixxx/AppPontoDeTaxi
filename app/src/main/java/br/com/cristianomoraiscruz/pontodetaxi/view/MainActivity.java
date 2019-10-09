@@ -1,4 +1,4 @@
-package br.com.cristianomoraiscruz.pontodetaxi;
+package br.com.cristianomoraiscruz.pontodetaxi.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import br.com.cristianomoraiscruz.pontodetaxi.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getBaseContext(), AddActivity.class);
+                Intent i = new Intent(getBaseContext(), AddTaxistaActivity.class);
                 startActivity(i);
 //                Toast.makeText(getApplication(), "Click: Taxista", Toast.LENGTH_SHORT).show();
             }
