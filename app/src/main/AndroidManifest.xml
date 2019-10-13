@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.MensalidadeActivity"></activity>
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,21 +17,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.AddTaxistaActivity"
+        <activity
+            android:name=".view.AddTaxistaActivity"
             android:label="Adicionar Taxista"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
-        <activity android:name=".view.ListActivity"
+            android:parentActivityName=".view.MainActivity"></activity>
+        <activity
+            android:name=".view.ListActivity"
             android:label="Lista de Taxistas"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
-        <activity android:name=".view.SobreActivity"
+            android:parentActivityName=".view.MainActivity"></activity>
+        <activity
+            android:name=".view.SobreActivity"
             android:label="Sobre"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
-        <activity android:name=".view.ConfigActivity"
+            android:parentActivityName=".view.MainActivity"></activity>
+        <activity
+            android:name=".view.ConfigActivity"
             android:label="Configurações"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
+            android:parentActivityName=".view.MainActivity"></activity>
     </application>
+
 </manifest>

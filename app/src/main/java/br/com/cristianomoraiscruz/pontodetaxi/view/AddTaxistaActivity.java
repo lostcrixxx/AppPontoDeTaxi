@@ -71,7 +71,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Não foi possível inserir. Erro!",
                             Toast.LENGTH_LONG).show();
-                    Log.e("AddTaxistaActivity", "Erro ao inserir taxista");
+                    Log.e("AddTaxistaActivity", "Erro ao inserir Taxista");
                 }
             }
         } catch (Exception ex) {
@@ -122,7 +122,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(getApplicationContext(), "Não foi possível inserir. Erro!",
                                     Toast.LENGTH_LONG).show();
-                            Log.e("AddTaxistaActivity", "Erro ao inserir taxista");
+                            Log.e("AddTaxistaActivity", "Erro ao inserir Taxista");
                         }
                     }
                 } catch (Exception ex) {
