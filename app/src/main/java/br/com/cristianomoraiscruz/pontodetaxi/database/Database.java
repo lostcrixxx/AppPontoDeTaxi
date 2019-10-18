@@ -1,8 +1,29 @@
 package br.com.cristianomoraiscruz.pontodetaxi.database;
 
-import android.database.sqlite.SQLiteStatement;
+import android.content.Context;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
 
 public class Database {
+
+    Context context;
+//    HelperDB helperDB = new HelperDB(context);
+
+    public long getTaxistasCount(Context context) {
+        long count = 0;
+        HelperDB helperDB = new HelperDB(context);
+        SQLiteDatabase db = helperDB.getReadableDatabase();
+        try {
+            count = DatabaseUtils.queryNumEntries(db, "taxistas");
+            Log.i("Database", "Quantidade de taxistas: " + count);
+        } catch(Exception e){
+            Log.e("Database", "Quantidade de taxistas");
+        }
+        db.close();
+        return count;
+    }
 
     public void insertFast(int insertCount) {
 
@@ -36,4 +57,6 @@ public class Database {
 //
 //        db.close();
     }
+
+
 }

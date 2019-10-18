@@ -28,11 +28,12 @@
                 android:textSize="22sp" />
 
             <TextView
+                android:id="@+id/txtQtdTaxista"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txtNPonto"
                 android:layout_marginTop="6dp"
-                android:text="taxistas"
+                android:text="0 taxistas"
                 android:textColor="#52BAFF"
                 android:textSize="14sp" />
 

@@ -15,11 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import br.com.cristianomoraiscruz.pontodetaxi.R;
+import br.com.cristianomoraiscruz.pontodetaxi.database.Database;
 
 public class MainActivity extends AppCompatActivity {
 
+    Database db = new Database();
+
     SharedPreferences prefs;
-    TextView txtNPonto;
+    TextView txtNPonto, txtQtdTaxista;
     CardView btnTaxi, btnExtrato, btnConfig, btnCombustivel, btnDetran, btnSobre;
 
     @Override
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         txtNPonto = findViewById(R.id.txtNPonto);
+        txtQtdTaxista = findViewById(R.id.txtQtdTaxista);
 
         btnTaxi = findViewById(R.id.btnTaxi);
         btnExtrato = findViewById(R.id.btnExtrato);
@@ -39,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
         txtNPonto.setText(prefs.getString("nPonto", "Configure o N. do Ponto"));
+
+        String num = String.valueOf(db.getTaxistasCount(this));
+        txtQtdTaxista.setText( num + " taxistas");
 
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
