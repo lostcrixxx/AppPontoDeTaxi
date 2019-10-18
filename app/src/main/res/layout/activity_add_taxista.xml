@@ -46,7 +46,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_call_black_24dp"
+                android:drawableStart="@drawable/ic_car_black_24dp"
                 android:hint="Placa *"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

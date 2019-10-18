@@ -107,7 +107,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                         cv.put("placa", lblPlaca);
                         cv.put("celular", lblCelular);
                         cv.put("email", lblEmail);
-                        long id = db.insert("contatos", null, cv);
+                        long id = db.insert("taxistas", null, cv);
                         Log.d("AddTaxistaActivity", "teste db value id: " + id);
                         if (id > 0) {
                             Toast.makeText(getApplicationContext(), "Taxista cadastrado com sucesso!",

@@ -23,7 +23,7 @@ public class HelperDB extends SQLiteOpenHelper {
             " (id Integer, numPonto Integer PRIMARY KEY, telefone1 Text, telefone2 Text, endereco Text, email Text, site Text);";
 
     private static final String TABLE_CREATE2 = "create table " + TAB_TAXISTA +
-            " (nome String PRIMARY KEY, celular String, email String);";
+            " (nome String PRIMARY KEY, placa String, celular String, email String);";
 
     private static final String TABLE_CREATE3 = "create table " + TAB_MENSALIDADE +
             " (nome String PRIMARY KEY, celular String, email String);";
