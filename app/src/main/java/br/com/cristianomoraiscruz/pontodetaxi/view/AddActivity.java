@@ -1,6 +1,7 @@
 package br.com.cristianomoraiscruz.pontodetaxi.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import br.com.cristianomoraiscruz.pontodetaxi.R;
 
 public class AddActivity extends AppCompatActivity {
 
-    Button btnMensalidade, btnDespesas, btnTaxista;
+    CardView btnMensalidade, btnDespesas, btnTaxista;
     Intent in;
 
     @Override
@@ -19,9 +20,9 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        btnMensalidade = (Button) findViewById(R.id.btnMensalidade);
-        btnDespesas = (Button) findViewById(R.id.btnDespesas);
-        btnTaxista = (Button) findViewById(R.id.btnTaxista);
+        btnMensalidade = findViewById(R.id.btnMensalidade);
+        btnDespesas = findViewById(R.id.btnDespesas);
+        btnTaxista = findViewById(R.id.btnTaxista);
 
         btnMensalidade.setOnClickListener(new View.OnClickListener() {
             @Override
