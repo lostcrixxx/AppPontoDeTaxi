@@ -20,5 +20,13 @@
     <string name="title_notifications">Informações</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <!--Buttons-->
+    <string name="add">Adicionar</string>
+    <string name="save">Salvar</string>
+    <string name="edit">Editar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="update">Atualizar</string>
+    <string name="close">Fechar</string>
+
 
 </resources>
