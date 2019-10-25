@@ -18,13 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.AddActivity" />
-        <activity android:name=".view.AddMensalidadeActivity" />
-        <activity android:name=".view.AddDespesasActivity" />
+        <activity android:name=".view.AddActivity"
+            android:label="Escolha uma opção"
+            android:parentActivityName=".view.MainActivity" />
+        <activity android:name=".view.AddMensalidadeActivity"
+            android:label="Adicionar Mensalidade"
+            android:parentActivityName=".view.AddActivity" />
+        <activity android:name=".view.AddDespesasActivity"
+            android:label="Adicionar Despesas"
+            android:parentActivityName=".view.AddActivity" />
         <activity
             android:name=".view.AddTaxistaActivity"
             android:label="Adicionar Taxista"
-            android:parentActivityName=".view.MainActivity" />
+            android:parentActivityName=".view.AddActivity" />
         <activity
             android:name=".view.ListActivity"
             android:label="Lista de Taxistas"
