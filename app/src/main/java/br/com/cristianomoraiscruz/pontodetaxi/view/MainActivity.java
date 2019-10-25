@@ -1,4 +1,4 @@
-package br.com.cristianomoraiscruz.pontodetaxi;
+package br.com.cristianomoraiscruz.pontodetaxi.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,10 +17,15 @@ import androidx.cardview.widget.CardView;
 import io.sentry.Sentry;
 import io.sentry.android.AndroidSentryClientFactory;
 
+import br.com.cristianomoraiscruz.pontodetaxi.R;
+import br.com.cristianomoraiscruz.pontodetaxi.database.Database;
+
 public class MainActivity extends AppCompatActivity {
 
+    Database db = new Database();
+
     SharedPreferences prefs;
-    TextView txtNPonto;
+    TextView txtNPonto, txtQtdTaxista;
     CardView btnTaxi, btnExtrato, btnConfig, btnCombustivel, btnDetran, btnSobre;
 
     @Override
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Sentry.init("https://90f47a878600458da2399094332392d0@sentry.io/1795712", new AndroidSentryClientFactory(this));
 
         txtNPonto = findViewById(R.id.txtNPonto);
+        txtQtdTaxista = findViewById(R.id.txtQtdTaxista);
 
         btnTaxi = findViewById(R.id.btnTaxi);
         btnExtrato = findViewById(R.id.btnExtrato);
@@ -41,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
         txtNPonto.setText(prefs.getString("nPonto", "Configure o N. do Ponto"));
+
+        String num = String.valueOf(db.getTaxistasCount(this));
+        txtQtdTaxista.setText( num + " taxistas");
 
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override

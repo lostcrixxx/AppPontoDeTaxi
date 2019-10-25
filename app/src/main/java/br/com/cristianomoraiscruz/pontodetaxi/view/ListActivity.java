@@ -1,4 +1,4 @@
-package br.com.cristianomoraiscruz.pontodetaxi;
+package br.com.cristianomoraiscruz.pontodetaxi.view;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
+import br.com.cristianomoraiscruz.pontodetaxi.R;
 
 public class ListActivity extends AppCompatActivity {
 

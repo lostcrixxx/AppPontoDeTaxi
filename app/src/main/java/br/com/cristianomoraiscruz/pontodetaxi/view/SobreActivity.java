@@ -1,7 +1,9 @@
-package br.com.cristianomoraiscruz.pontodetaxi;
+package br.com.cristianomoraiscruz.pontodetaxi.view;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import br.com.cristianomoraiscruz.pontodetaxi.R;
 
 public class SobreActivity extends AppCompatActivity {
 

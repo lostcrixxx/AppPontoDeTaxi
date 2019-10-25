@@ -1,12 +1,12 @@
 package br.com.cristianomoraiscruz.pontodetaxi.model;
 
-public class taxista {
+public class Taxista {
 
-    String nome;
-    String placa;
-    String valor;
-    String celular;
-    String email;
+    private String nome;
+    private String placa;
+    private String valor;
+    private String celular;
+    private String email;
 
     public String getNome() {
         return nome;

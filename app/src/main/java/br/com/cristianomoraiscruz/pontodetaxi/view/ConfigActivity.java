@@ -1,4 +1,4 @@
-package br.com.cristianomoraiscruz.pontodetaxi;
+package br.com.cristianomoraiscruz.pontodetaxi.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import br.com.cristianomoraiscruz.pontodetaxi.R;
 
 public class ConfigActivity extends AppCompatActivity {
 
@@ -33,7 +35,11 @@ public class ConfigActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Número do ponto foi salvo com sucesso !", Toast.LENGTH_LONG).show();
 
                 nPonto.setText("");
+
+
+                onBackPressed();
             }
         });
+
     }
 }
