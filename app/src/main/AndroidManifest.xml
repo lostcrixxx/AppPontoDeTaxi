@@ -36,7 +36,11 @@
             android:parentActivityName=".view.MainActivity">
         </activity>
         <activity android:name=".view.ListActivity"
-            android:label="Lista de Taxistas"
+            android:label="Extrato"
+            android:parentActivityName=".view.MainActivity">
+        </activity>
+        <activity android:name=".view.ListTaxistaActivity"
+            android:label="Lista de Taxista"
             android:parentActivityName=".view.MainActivity">
         </activity>
         <activity android:name=".view.SobreActivity"

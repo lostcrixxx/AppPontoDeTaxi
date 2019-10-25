@@ -9,10 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 import br.com.cristianomoraiscruz.pontodetaxi.R;
+import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 
-public class ListActivity extends AppCompatActivity {
+public class ListTaxistaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,21 +21,21 @@ public class ListActivity extends AppCompatActivity {
 
         HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
         SQLiteDatabase bdr1 = null;
-        String str= "\nMensalidades\n\n";
+        String str= "\nTaxistas\n\n";
         try {
             Context ctx = this;  // ou: Context ctx = v.getContext(); dentro de onClick
             ch1 = new HelperDB(ctx);
             bdr1 = ch1.getReadableDatabase();
-            Cursor cursor = bdr1.query("mensalidade", null, null, null, null, null, null);
+            Cursor cursor = bdr1.query("taxistas", null, null, null, null, null, null);
             // ou Cursor cursor = bdr.rawQuery("select * from contatos", null);
             while (cursor.moveToNext()) {
                 String nome = cursor.getString(cursor.getColumnIndex("nome"));
-                String placa = cursor.getString(cursor.getColumnIndex("data"));
-                String valor = cursor.getString(cursor.getColumnIndex("valor"));
+                String placa = cursor.getString(cursor.getColumnIndex("placa"));
+                String valor = cursor.getString(cursor.getColumnIndex("celular"));
                 String nom = cursor.getString(0);
                 String cel = cursor.getString(1);
                 String em = cursor.getString(2);
-                str += "Nome: " + nome + ", Data: "  + placa + ", R$"  + valor + "\n\n";
+                str += "Nome: " + nome + ", Placa: "  + placa + ", Celular:"  + valor + "\n\n";
             }
             ((TextView)findViewById(R.id.lista)).setText(str);
         } catch (Exception ex) {

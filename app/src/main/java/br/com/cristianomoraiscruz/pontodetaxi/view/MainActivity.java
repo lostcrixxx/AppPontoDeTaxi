@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences prefs;
     TextView txtNPonto, txtQtdTaxista;
-    CardView btnTaxi, btnExtrato, btnConfig, btnCombustivel, btnDetran, btnSobre;
+    CardView btnTaxi, btnExtrato, btnTaxista, btnGrafico, btnConfig, btnCombustivel, btnDetran, btnSobre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnTaxi = findViewById(R.id.btnTaxi);
         btnExtrato = findViewById(R.id.btnExtrato);
+        btnTaxista = findViewById(R.id.btnTaxista);
+        btnGrafico = findViewById(R.id.btnGrafico);
         btnCombustivel = findViewById(R.id.btnCombustivel);
         btnDetran = findViewById(R.id.btnDetran);
 
@@ -65,6 +67,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getBaseContext(), ListActivity.class);
                 startActivity(i);
+            }
+        });
+
+        btnTaxista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), ListTaxistaActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnGrafico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção... ", Toast.LENGTH_SHORT).show();
             }
         });
 

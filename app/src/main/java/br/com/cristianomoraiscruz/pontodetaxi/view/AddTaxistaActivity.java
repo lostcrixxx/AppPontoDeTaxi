@@ -147,9 +147,11 @@ public class AddTaxistaActivity extends AppCompatActivity {
                     openHelper = new HelperDB(getApplicationContext());
                     db = openHelper.getWritableDatabase();
                     EditText nome = (EditText) findViewById(R.id.nome);
+                    EditText placa = (EditText) findViewById(R.id.placa);
                     EditText celular = (EditText) findViewById(R.id.cel);
                     EditText email = (EditText) findViewById(R.id.email);
                     String n = nome.getText().toString();
+                    String strPlaca = placa.getText().toString();
                     String c = celular.getText().toString();
                     String e = email.getText().toString();
                     if (n.isEmpty() || c.isEmpty() || e.isEmpty()) {
@@ -158,6 +160,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                     } else {
                         ContentValues cv = new ContentValues();
                         cv.put("nome", n);
+                        cv.put("placa", strPlaca);
                         cv.put("celular", c);
                         cv.put("email", e);
                         long id = db.update("contatos", cv, "nome='" + n + "'", null);
