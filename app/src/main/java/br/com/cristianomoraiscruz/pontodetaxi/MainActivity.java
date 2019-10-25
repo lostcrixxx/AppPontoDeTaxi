@@ -14,6 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import io.sentry.Sentry;
+import io.sentry.android.AndroidSentryClientFactory;
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences prefs;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Sentry.init("https://90f47a878600458da2399094332392d0@sentry.io/1795712", new AndroidSentryClientFactory(this));
 
         txtNPonto = findViewById(R.id.txtNPonto);
 
@@ -54,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
 
         btnCombustivel.setOnClickListener(new View.OnClickListener() {
             @Override
