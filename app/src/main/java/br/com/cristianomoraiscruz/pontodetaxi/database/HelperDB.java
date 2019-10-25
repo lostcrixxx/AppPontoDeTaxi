@@ -26,7 +26,7 @@ public class HelperDB extends SQLiteOpenHelper {
             " (nome String PRIMARY KEY, placa String, celular String, email String);";
 
     private static final String TABLE_CREATE3 = "create table " + TAB_MENSALIDADE +
-            " (nome String PRIMARY KEY, celular String, email String);";
+            " (nome String PRIMARY KEY, data String, valor String);";
 
     private static final String TABLE_CREATE4 = "create table " + TAB_CONTA +
             " (nome String PRIMARY KEY, celular String, email String);";
