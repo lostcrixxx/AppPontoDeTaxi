@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_vertical"
     tools:context=".view.AddDespesasActivity">
 
     <LinearLayout
@@ -24,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_person_black_24dp"
+                android:singleLine="true"
                 android:hint="Tipo *" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -41,12 +43,13 @@
             android:text="Data: "
             android:textAppearance="?android:attr/textAppearanceLarge">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/placa"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_car_black_24dp"
+                android:singleLine="true"
                 android:hint="Data *" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -64,12 +67,13 @@
             android:text="Valor: "
             android:textAppearance="?android:attr/textAppearanceLarge">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/cel"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_call_black_24dp"
+                android:singleLine="true"
                 android:hint="Valor" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
