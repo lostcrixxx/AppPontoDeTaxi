@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
+
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 import br.com.cristianomoraiscruz.pontodetaxi.R;
 

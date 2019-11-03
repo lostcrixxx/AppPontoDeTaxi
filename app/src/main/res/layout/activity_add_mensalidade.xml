@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_car_black_24dp"
                 android:singleLine="true"
+                android:inputType="number"
                 android:hint="Data *" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -74,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_call_black_24dp"
                 android:singleLine="true"
+                android:inputType="number"
                 android:hint="Valor" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
