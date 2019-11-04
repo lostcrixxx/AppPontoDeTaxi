@@ -27,6 +27,7 @@
                 android:drawableStart="@drawable/ic_person_black_24dp"
                 android:singleLine="true"
                 android:imeOptions="actionNext"
+                android:inputType="text|textNoSuggestions"
                 android:hint="Nome *" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
