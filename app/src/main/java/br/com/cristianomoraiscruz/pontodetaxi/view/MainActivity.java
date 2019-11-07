@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.onesignal.OneSignal;
+
 import io.sentry.Sentry;
 import io.sentry.android.AndroidSentryClientFactory;
 
@@ -33,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Sentry.init("https://90f47a878600458da2399094332392d0@sentry.io/1795712", new AndroidSentryClientFactory(this));
+
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
         txtNPonto = findViewById(R.id.txtNPonto);
         txtQtdTaxista = findViewById(R.id.txtQtdTaxista);
