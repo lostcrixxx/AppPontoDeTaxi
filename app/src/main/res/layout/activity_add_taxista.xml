@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_vertical"
     tools:context=".view.AddTaxistaActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textView1"
@@ -24,6 +25,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_person_black_24dp"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:inputType="text|textNoSuggestions"
                 android:hint="Nome *" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -41,12 +45,14 @@
             android:text="Placa: "
             android:textAppearance="?android:attr/textAppearanceLarge">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/placa"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_car_black_24dp"
+                android:singleLine="true"
+                android:inputType="number"
                 android:hint="Placa *"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -70,6 +76,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_call_black_24dp"
+                android:singleLine="true"
+                android:inputType="number"
                 android:hint="Celular"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -93,6 +101,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_email_black_24dp"
+                android:singleLine="true"
+                android:inputType="textEmailAddress"
                 android:hint="Email"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

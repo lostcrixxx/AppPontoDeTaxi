@@ -37,10 +37,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/event" />
+                    <!--<ImageView-->
+                        <!--android:layout_width="80dp"-->
+                        <!--android:layout_height="80dp"-->
+                        <!--android:src="@drawable/event" />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -70,10 +70,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/report" />
+                    <!--<ImageView-->
+                        <!--android:layout_width="80dp"-->
+                        <!--android:layout_height="80dp"-->
+                        <!--android:src="@drawable/report" />-->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -103,10 +103,10 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/optimization" />
+                    <!--<ImageView-->
+                        <!--android:layout_width="80dp"-->
+                        <!--android:layout_height="80dp"-->
+                        <!--android:src="@drawable/optimization" />-->
 
                     <TextView
                         android:layout_width="wrap_content"

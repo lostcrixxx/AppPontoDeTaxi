@@ -13,6 +13,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.azimolabs.maskformatter.MaskFormatter;
+
+import java.text.ParseException;
+
+import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 import br.com.cristianomoraiscruz.pontodetaxi.R;
 
@@ -34,7 +39,15 @@ public class AddTaxistaActivity extends AppCompatActivity {
         btnAlterarTaxista = findViewById(R.id.btnAlterarTaxista);
         btnExcluirTaxista = findViewById(R.id.btnExcluirTaxista);
 
+        EditText celular = (EditText) findViewById(R.id.cel);
+        edtPlaca = (EditText) findViewById(R.id.placa);
+
         createTaxista(); // insert, update and delete
+
+        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_PHONE, celular);
+        MaskFormatter ibanMaskFormatter2 = new MaskFormatter(Constants.MASK_PLAQUE, edtPlaca);
+        celular.addTextChangedListener(ibanMaskFormatter1);
+        edtPlaca.addTextChangedListener(ibanMaskFormatter2);
     }
 
     public void savePonto(View v) {

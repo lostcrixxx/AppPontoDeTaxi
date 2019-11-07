@@ -11,13 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.azimolabs.maskformatter.MaskFormatter;
+
 import br.com.cristianomoraiscruz.pontodetaxi.R;
+import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 
 public class AddMensalidadeActivity extends AppCompatActivity {
 
-    EditText edtNome, edtPlaca, edtCelular;
-    String lblNome, lblPlaca, lblCelular;
+    EditText edtNome, edtDate, edtCelular;
+    String lblNome, lblDate, lblCelular;
     Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista;
 
     HelperDB openHelper = null; // a classe derivada de SQLiteOpenHelper
@@ -31,7 +34,12 @@ public class AddMensalidadeActivity extends AppCompatActivity {
         btnAlterarTaxista = findViewById(R.id.btnAlterarTaxista);
         btnExcluirTaxista = findViewById(R.id.btnExcluirTaxista);
 
+        edtDate = (EditText) findViewById(R.id.placa);
+
         createMensalidade(); // insert, update and delete
+
+        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_DATE, edtDate);
+        edtDate.addTextChangedListener(ibanMaskFormatter1);
     }
 
     public void createMensalidade() {
@@ -42,10 +50,10 @@ public class AddMensalidadeActivity extends AppCompatActivity {
                     openHelper = new HelperDB(getApplicationContext());
                     db = openHelper.getWritableDatabase();
                     edtNome = (EditText) findViewById(R.id.nome);
-                    edtPlaca = (EditText) findViewById(R.id.placa);
+                    edtDate = (EditText) findViewById(R.id.placa);
                     edtCelular = (EditText) findViewById(R.id.cel);
                     lblNome = edtNome.getText().toString();
-                    lblPlaca = edtPlaca.getText().toString();
+                    lblDate = edtDate.getText().toString();
                     lblCelular = edtCelular.getText().toString();
                     if (lblNome.isEmpty() || lblCelular.isEmpty()) {
                         Toast.makeText(getApplicationContext(),
@@ -53,7 +61,7 @@ public class AddMensalidadeActivity extends AppCompatActivity {
                     } else {
                         ContentValues cv = new ContentValues();
                         cv.put("nome", lblNome);
-                        cv.put("data", lblPlaca);
+                        cv.put("data", lblDate);
                         cv.put("valor", lblCelular);
                         long id = db.insert("mensalidade", null, cv);
                         Log.d("AddMensalidadeActivity", "teste db value id: " + id);
@@ -61,7 +69,7 @@ public class AddMensalidadeActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Mensalidade cadastrada com sucesso!",
                                     Toast.LENGTH_LONG).show();
                             edtNome.setText("");
-                            edtPlaca.setText("");
+                            edtDate.setText("");
                             edtCelular.setText("");
                         } else if (id == -1) {
                             Toast.makeText(getApplicationContext(), "Não foi possível inserir. Nome duplicado!",
