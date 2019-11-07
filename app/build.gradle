@@ -1,4 +1,18 @@
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/'}
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.4, 0.99.99]'
+    }
+}
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
 
 android {
     compileSdkVersion 29
@@ -11,6 +25,12 @@ android {
         versionName '2.0.1'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk.abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+
+        manifestPlaceholders = [
+                onesignal_app_id: '5a4acfe4-5f44-4a34-bc12-f3333b12c659',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
     }
     buildTypes {
         release {
@@ -40,4 +60,7 @@ dependencies {
     implementation 'org.slf4j:slf4j-nop:1.7.25'
 
     implementation 'com.azimolabs.maskformatter:maskformatter:0.2'
+
+    // Push
+    implementation 'com.onesignal:OneSignal:[3.11.2, 3.99.99]'
 }
