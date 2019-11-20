@@ -21,7 +21,7 @@ public class ListActivity extends AppCompatActivity {
 
         HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
         SQLiteDatabase bdr1 = null;
-        String str= "\nMensalidades\n\n";
+        String str= "\nHistórico\n\n";
         try {
             Context ctx = this;  // ou: Context ctx = v.getContext(); dentro de onClick
             ch1 = new HelperDB(ctx);
