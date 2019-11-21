@@ -1,26 +1,33 @@
 package br.com.cristianomoraiscruz.pontodetaxi.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+/**
+ * Modified by Cristiano M. on 20/11/19
+ */
 
 public class Database {
 
-    Context context;
-//    HelperDB helperDB = new HelperDB(context);
+    //    HelperDB helperDB = new HelperDB(context);
+    HelperDB helperDB;
+    SQLiteDatabase db;
 
     public long getTaxistasCount(Context context) {
         long count = 0;
-        HelperDB helperDB = new HelperDB(context);
-        SQLiteDatabase db = helperDB.getReadableDatabase();
+        helperDB = new HelperDB(context);
+        db = helperDB.getReadableDatabase();
+
         try {
             count = DatabaseUtils.queryNumEntries(db, "taxistas");
             Log.i("Database", "Quantidade de taxistas: " + count);
-        } catch(Exception e){
+        } catch (Exception e) {
             Log.e("Database", "Quantidade de taxistas");
         }
+
         db.close();
         return count;
     }
@@ -58,5 +65,39 @@ public class Database {
 //        db.close();
     }
 
+    public double getMensalidadeTotal(Context context) {
+        double count = 0;
+        helperDB = new HelperDB(context);
+        db = helperDB.getReadableDatabase();
 
+        Cursor c = db.rawQuery("SELECT sum(valor) FROM mensalidade", null);
+        if (c.moveToFirst()) {
+            do {
+                //Recuperando valores
+                count += c.getDouble(0);
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+        return count;
+    }
+
+    public double getDespesaTotal(Context context) {
+        double count = 0;
+        helperDB = new HelperDB(context);
+        db = helperDB.getReadableDatabase();
+
+        Cursor c = db.rawQuery("SELECT sum(valor) FROM contas", null);
+        if (c.moveToFirst()) {
+            do {
+                //Recuperando valores
+                count += c.getDouble(0);
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+        return count;
+    }
 }

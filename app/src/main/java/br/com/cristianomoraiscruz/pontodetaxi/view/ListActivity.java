@@ -4,20 +4,37 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import br.com.cristianomoraiscruz.pontodetaxi.database.Database;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 import br.com.cristianomoraiscruz.pontodetaxi.R;
 
+/**
+ * Modified by Cristiano M. on 20/11/19
+ */
+
 public class ListActivity extends AppCompatActivity {
+
+    Database db = new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        TextView mensalidade = (TextView) findViewById(R.id.txtValueMensalidade);
+        //TextView despesa = (TextView) findViewById(R.id.txtValueDespesas);
+        //TextView despesa = (TextView) findViewById(R.id.txtValueDespesas);
+
+        mensalidade.setText(String.valueOf("+ R$ " + db.getMensalidadeTotal(this)));
+        //despesa.setText(String.valueOf("- R$ " + db.getDespesaTotal(this)));
+        //despesa.setText(String.valueOf("- R$ " + db.getMensalidadeTotal(this) - db.getDespesaTotal(this)));
+
 
         HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
         SQLiteDatabase bdr1 = null;
