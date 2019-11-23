@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Modified by Cristiano M. on 20/11/19
@@ -68,6 +70,34 @@ public class Database {
         return count;
     }
 
+    public String getHistorico(Context context) {
+        HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
+        SQLiteDatabase bdr1 = null;
+        String str = "\nHistórico\n\n";
+        try {
+            //Context ctx = this;  // ou: Context ctx = v.getContext(); dentro de onClick
+            ch1 = new HelperDB(context);
+            bdr1 = ch1.getReadableDatabase();
+            Cursor cursor = bdr1.query("mensalidade", null, null, null, null, null, null);
+            // ou Cursor cursor = bdr.rawQuery("select * from contatos", null);
+            while (cursor.moveToNext()) {
+                String nome = cursor.getString(cursor.getColumnIndex("nome"));
+                String placa = cursor.getString(cursor.getColumnIndex("data"));
+                String valor = cursor.getString(cursor.getColumnIndex("valor"));
+                //String nom = cursor.getString(0);
+                //String cel = cursor.getString(1);
+                //String em = cursor.getString(2);
+                str += "Nome: " + nome + ", Data: " + placa + ", R$" + valor + "\n\n";
+            }
+            //((TextView) findViewById(R.id.lista)).setText(str);
+        } catch (Exception ex) {
+            //Toast.makeText(getApplicationContext(), "\nErro processando o BD.\n", Toast.LENGTH_LONG).show();
+        } finally {
+            if (bdr1 != null) bdr1.close();
+            if (ch1 != null) ch1.close();
+        }
+        return str;
+    }
     public void insertFast(int insertCount) {
 
         // you can use INSERT only
