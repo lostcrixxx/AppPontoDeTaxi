@@ -34,6 +34,31 @@ public class Database {
         return count;
     }
 
+    public String getTaxistasName(Context context) {
+        HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
+        SQLiteDatabase bdr1 = null;
+        String str = "\nTaxistas\n\n";
+        try {
+            ch1 = new HelperDB(context);
+            bdr1 = ch1.getReadableDatabase();
+            Cursor cursor = bdr1.query("taxistas", null, null, null, null, null, "nome");
+            // ou Cursor cursor = bdr.rawQuery("select * from contatos", null);
+            while (cursor.moveToNext()) {
+                String nome = cursor.getString(cursor.getColumnIndex("nome"));
+                String placa = cursor.getString(cursor.getColumnIndex("placa"));
+                String valor = cursor.getString(cursor.getColumnIndex("celular"));
+                str += "Nome: " + nome + ", Placa: " + placa + ", Celular:" + valor + "\n\n";
+            }
+        } catch (Exception ex) {
+            Log.e("Database", "ERROR getTaxistasName");
+            //Toast.makeText(getApplicationContext(), "\nErro processando o BD.\n", Toast.LENGTH_LONG).show();
+        } finally {
+            if (bdr1 != null) bdr1.close();
+            if (ch1 != null) ch1.close();
+        }
+        return str;
+    }
+
     public double getMensalidadeTotal(Context context) {
         double count = 0;
         helperDB = new HelperDB(context);
@@ -78,19 +103,16 @@ public class Database {
             //Context ctx = this;  // ou: Context ctx = v.getContext(); dentro de onClick
             ch1 = new HelperDB(context);
             bdr1 = ch1.getReadableDatabase();
-            Cursor cursor = bdr1.query("mensalidade", null, null, null, null, null, null);
+            Cursor cursor = bdr1.query("mensalidade", null, null, null, null, null, "id DESC");
             // ou Cursor cursor = bdr.rawQuery("select * from contatos", null);
             while (cursor.moveToNext()) {
                 String nome = cursor.getString(cursor.getColumnIndex("nome"));
                 String placa = cursor.getString(cursor.getColumnIndex("data"));
                 String valor = cursor.getString(cursor.getColumnIndex("valor"));
-                //String nom = cursor.getString(0);
-                //String cel = cursor.getString(1);
-                //String em = cursor.getString(2);
                 str += "Nome: " + nome + ", Data: " + placa + ", R$" + valor + "\n\n";
             }
-            //((TextView) findViewById(R.id.lista)).setText(str);
         } catch (Exception ex) {
+            Log.e("Database", "ERROR getHistorico");
             //Toast.makeText(getApplicationContext(), "\nErro processando o BD.\n", Toast.LENGTH_LONG).show();
         } finally {
             if (bdr1 != null) bdr1.close();
@@ -98,6 +120,7 @@ public class Database {
         }
         return str;
     }
+
     public void insertFast(int insertCount) {
 
         // you can use INSERT only
