@@ -3,7 +3,9 @@ package br.com.cristianomoraiscruz.pontodetaxi.view;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,7 @@ import br.com.cristianomoraiscruz.pontodetaxi.R;
 public class ListActivity extends AppCompatActivity {
 
     Database db = new Database();
+    double valueMensal, valueDespesa, valueTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +31,31 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         TextView mensalidade = (TextView) findViewById(R.id.txtValueMensalidade);
-        //TextView despesa = (TextView) findViewById(R.id.txtValueDespesas);
-        //TextView despesa = (TextView) findViewById(R.id.txtValueDespesas);
+        TextView despesa = (TextView) findViewById(R.id.txtValueDespesas);
+        TextView saldo = (TextView) findViewById(R.id.txtValueSaldo);
 
-        mensalidade.setText(String.valueOf("+ R$ " + db.getMensalidadeTotal(this)));
-        //despesa.setText(String.valueOf("- R$ " + db.getDespesaTotal(this)));
-        //despesa.setText(String.valueOf("- R$ " + db.getMensalidadeTotal(this) - db.getDespesaTotal(this)));
+        valueMensal = db.getMensalidadeTotal(this);
+        valueDespesa = db.getDespesaTotal(this);
+
+        valueTotal = valueMensal - valueDespesa;
+
+        mensalidade.setText(String.valueOf("+ R$ " + valueMensal));
+        despesa.setText(String.valueOf("- R$ " + valueDespesa));
+        saldo.setText(String.valueOf("R$ " + valueTotal));
+
+        // Cor conforme o status de saldo
+        if(valueTotal < 0){
+            saldo.setTextColor(Color.RED);
+        } else if(valueTotal == 0){
+            saldo.setTextColor(Color.YELLOW);
+        } else {
+            saldo.setTextColor(Color.GREEN);
+        }
+
+
+
+        //valueMensal = Double.parseDouble(mensalidade.toString());
+        Log.e("ListActivity", "valueDespesa " + (valueMensal - valueDespesa));
 
 
         HelperDB ch1 = null;  // a classe derivada de SQLiteOpenHelper
