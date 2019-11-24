@@ -10,11 +10,11 @@ public class HelperDB extends SQLiteOpenHelper {
 
     private static final String TAB_CONTATO = "contatos";
 
+    private static final String DATABASE_NAME = "db_pontotaxi";   //nome do BD
     private static final String TAB_PONTO = "ponto"; //nome da tabela
     private static final String TAB_TAXISTA = "taxistas";
     private static final String TAB_MENSALIDADE = "mensalidade";
     private static final String TAB_CONTA = "contas";
-    private static final String DATABASE_NAME = "db_pontotaxi";   //nome do BD
 
     private static final String TABLE_CREATE10 = "create table " + TAB_CONTATO +
             " (nome String PRIMARY KEY, placa String, valor String, celular String, email String);";
@@ -23,13 +23,13 @@ public class HelperDB extends SQLiteOpenHelper {
             " (id Integer, numPonto Integer PRIMARY KEY, telefone1 Text, telefone2 Text, endereco Text, email Text, site Text);";
 
     private static final String TABLE_CREATE2 = "create table " + TAB_TAXISTA +
-            " (nome String PRIMARY KEY, placa String, celular String, email String);";
+            " (id Integer, nome String PRIMARY KEY, placa String, celular String, email String);";
 
     private static final String TABLE_CREATE3 = "create table " + TAB_MENSALIDADE +
-            " (nome String PRIMARY KEY, data String, valor String);";
+            " (id Integer PRIMARY KEY, nome String, data String, valor String);";
 
     private static final String TABLE_CREATE4 = "create table " + TAB_CONTA +
-            " (nome String PRIMARY KEY, celular String, email String);";
+            " (id Integer PRIMARY KEY, nome String, data String, valor String);";
 
     public HelperDB(Context context) {
 
