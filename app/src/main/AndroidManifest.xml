@@ -21,35 +21,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.AddActivity"
+        <activity
+            android:name=".view.AddActivity"
             android:label="Escolha uma opção"
             android:parentActivityName=".view.MainActivity" />
-        <activity android:name=".view.AddMensalidadeActivity"
+        <activity
+            android:name=".view.AddMensalidadeActivity"
             android:label="Adicionar Mensalidade"
             android:parentActivityName=".view.AddActivity" />
-        <activity android:name=".view.AddDespesasActivity"
+        <activity
+            android:name=".view.AddDespesasActivity"
             android:label="Adicionar Despesas"
             android:parentActivityName=".view.AddActivity" />
         <activity
             android:name=".view.AddTaxistaActivity"
             android:label="Adicionar Taxista"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
-        <activity android:name=".view.ListActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.ListActivity"
             android:label="Extrato"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
-        <activity android:name=".view.ListTaxistaActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.ListTaxistaActivity"
             android:label="Lista de Taxista"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
-        <activity android:name=".view.SobreActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.FuelChooseActivity"
+            android:label="Combustível"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.SobreActivity"
             android:label="Sobre"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
-        <activity android:name=".view.ConfigActivity"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.ConfigActivity"
             android:label="Configurações"
-            android:parentActivityName=".view.MainActivity">
-        </activity>
+            android:parentActivityName=".view.MainActivity" />
     </application>
+
 </manifest>
