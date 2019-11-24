@@ -6,7 +6,7 @@ buildscript {
         maven { url 'https://plugins.gradle.org/m2/'}
     }
     dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.4, 0.99.99]'
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.12.6'
     }
 }
 
@@ -16,7 +16,7 @@ repositories {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "br.com.cristianomoraiscruz.pontodetaxi"
         minSdkVersion 21
@@ -62,5 +62,5 @@ dependencies {
     implementation 'com.azimolabs.maskformatter:maskformatter:0.2'
 
     // Push
-    implementation 'com.onesignal:OneSignal:[3.11.2, 3.99.99]'
+    implementation 'com.onesignal:OneSignal:3.12.3'
 }
