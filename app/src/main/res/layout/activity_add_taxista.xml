@@ -20,7 +20,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nome"
+                android:id="@+id/nomeTaxista"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/placa"
+                android:id="@+id/placaTaxista"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge">
 
             <EditText
-                android:id="@+id/cel"
+                android:id="@+id/celTaxista"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge">
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/emailTaxista"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/obrigatorio"
+            android:id="@+id/txtObrigatorio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="* Campo obrigatório"/>
@@ -133,17 +133,23 @@
             android:layout_height="wrap_content"
             android:text="Inserir" />
 
-        <Button
-            android:id="@+id/btnAlterarTaxista"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alterar" />
+        <!--        <Button-->
+        <!--            android:id="@+id/btnAlterarTaxista"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Alterar" />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/btnExcluirTaxista"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Excluir" />-->
 
         <Button
-            android:id="@+id/btnExcluirTaxista"
+            android:id="@+id/btnLimparCampos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Excluir" />
+            android:text="Limpar" />
 
         <!--<Button-->
             <!--android:id="@+id/button2"-->

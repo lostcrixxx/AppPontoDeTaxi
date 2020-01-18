@@ -25,7 +25,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
 
     EditText edtNome, edtPlaca, edtCelular, edtEmail;
     String lblNome, lblPlaca, lblCelular, lblEmail;
-    Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista;
+    Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista, btnLimparCampos;
 
     HelperDB openHelper = null; // a classe derivada de SQLiteOpenHelper
     SQLiteDatabase db = null;
@@ -36,17 +36,20 @@ public class AddTaxistaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_taxista);
 
         btnInserirTaxista = findViewById(R.id.btnInserirTaxista);
-        btnAlterarTaxista = findViewById(R.id.btnAlterarTaxista);
-        btnExcluirTaxista = findViewById(R.id.btnExcluirTaxista);
+//        btnAlterarTaxista = findViewById(R.id.btnAlterarTaxista);
+//        btnExcluirTaxista = findViewById(R.id.btnExcluirTaxista);
+        btnLimparCampos = findViewById(R.id.btnLimparCampos);
 
-        EditText celular = (EditText) findViewById(R.id.cel);
-        edtPlaca = (EditText) findViewById(R.id.placa);
+        edtNome = (EditText) findViewById(R.id.nomeTaxista);
+        edtCelular = (EditText) findViewById(R.id.celTaxista);
+        edtPlaca = (EditText) findViewById(R.id.placaTaxista);
+        edtEmail = (EditText) findViewById(R.id.emailTaxista);
 
         createTaxista(); // insert, update and delete
 
-        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_PHONE, celular);
+        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_PHONE, edtCelular);
         MaskFormatter ibanMaskFormatter2 = new MaskFormatter(Constants.MASK_PLAQUE, edtPlaca);
-        celular.addTextChangedListener(ibanMaskFormatter1);
+        edtCelular.addTextChangedListener(ibanMaskFormatter1);
         edtPlaca.addTextChangedListener(ibanMaskFormatter2);
     }
 
@@ -58,7 +61,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
             bdw = ch.getWritableDatabase();
             EditText nome = (EditText) findViewById(R.id.nome);
             EditText celular = (EditText) findViewById(R.id.cel);
-            EditText email = (EditText) findViewById(R.id.email);
+            EditText email = (EditText) findViewById(R.id.emailTaxista);
             String n = nome.getText().toString();
             String c = celular.getText().toString();
             String e = email.getText().toString();
@@ -68,7 +71,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
             } else {
                 ContentValues cv = new ContentValues();
 //                cv.put("nome", lblNome);
-//                cv.put("celular", lblCelular);
+//                cv.put("celular", lblValor);
 //                cv.put("email", lblEmail);
                 long id = bdw.insert("contatos", null, cv);
                 Log.d("AddTaxistaActivity", "teste db value id: " + id);
@@ -76,7 +79,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Taxista cadastrado com sucesso!",
                             Toast.LENGTH_LONG).show();
 //                    edtNome.setText("");
-//                    edtCelular.setText("");
+//                    edtValor.setText("");
 //                    edtEmail.setText("");
                 } else if (id == -1) {
                     Toast.makeText(getApplicationContext(), "Não foi possível inserir. Nome duplicado!",
@@ -103,10 +106,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                 try {
                     openHelper = new HelperDB(getApplicationContext());
                     db = openHelper.getWritableDatabase();
-                    edtNome = (EditText) findViewById(R.id.nome);
-                    edtPlaca = (EditText) findViewById(R.id.placa);
-                    edtCelular = (EditText) findViewById(R.id.cel);
-                    edtEmail = (EditText) findViewById(R.id.email);
+
                     lblNome = edtNome.getText().toString();
                     lblPlaca = edtPlaca.getText().toString();
                     lblCelular = edtCelular.getText().toString();
@@ -125,10 +125,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                         if (id > 0) {
                             Toast.makeText(getApplicationContext(), "Taxista cadastrado com sucesso!",
                                     Toast.LENGTH_LONG).show();
-                            edtNome.setText("");
-                            edtPlaca.setText("");
-                            edtCelular.setText("");
-                            edtEmail.setText("");
+                            limparCampos();
                         } else if (id == -1) {
                             Toast.makeText(getApplicationContext(), "Não foi possível inserir. Nome duplicado!",
                                     Toast.LENGTH_LONG).show();
@@ -152,85 +149,99 @@ public class AddTaxistaActivity extends AppCompatActivity {
             }
         });
 
-        btnAlterarTaxista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        btnAlterarTaxista.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                try {
+//                    openHelper = new HelperDB(getApplicationContext());
+//                    db = openHelper.getWritableDatabase();
+//                    EditText nome = (EditText) findViewById(R.id.nome);
+//                    EditText placa = (EditText) findViewById(R.id.placa);
+//                    EditText celular = (EditText) findViewById(R.id.cel);
+//                    EditText email = (EditText) findViewById(R.id.email);
+//                    String n = nome.getText().toString();
+//                    String strPlaca = placa.getText().toString();
+//                    String c = celular.getText().toString();
+//                    String e = email.getText().toString();
+//                    if (n.isEmpty() || c.isEmpty() || e.isEmpty()) {
+//                        Toast.makeText(getApplicationContext(),
+//                                "Por favor, preencha os dados.", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        ContentValues cv = new ContentValues();
+//                        cv.put("nome", n);
+//                        cv.put("placa", strPlaca);
+//                        cv.put("celular", c);
+//                        cv.put("email", e);
+//                        long id = db.update("contatos", cv, "nome='" + n + "'", null);
+//                        if (id == 0) {
+//                            Toast.makeText(getApplicationContext(), "\nNão foi possível alterar\n",
+//                                    Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                } catch (Exception ex) {
+//                    Toast.makeText(getApplicationContext(), "\nErro processando o BD. \n",
+//                            Toast.LENGTH_LONG).show();
+//                } finally {
+//                    if (db != null) {
+//                        db.close();
+//                    }
+//                    if (openHelper != null) {
+//                        openHelper.close();
+//                    }
+//                }
+//            }
+//        });
+//
+//        btnExcluirTaxista.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                try {
+//                    openHelper = new HelperDB(getApplicationContext());
+//                    db = openHelper.getWritableDatabase();
+//                    EditText nome = (EditText) findViewById(R.id.nome);
+//
+//                    String n = nome.getText().toString();
+//
+//                    if (n.isEmpty()) {
+//                        Toast.makeText(getApplicationContext(),
+//                                "Por favor, preencha os dados.", Toast.LENGTH_LONG).show();
+//                    } else {
+//                        ContentValues cv = new ContentValues();
+//                        cv.put("nome", n);
+//
+//                        long id = db.delete("contatos", "nome='" + n + "'", null);
+//                        if (id == 0) {
+//                            Toast.makeText(getApplicationContext(), "\nNão foi possível excluir\n",
+//                                    Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                } catch (Exception ex) {
+//                    Toast.makeText(getApplicationContext(), "\nErro processando o BD. \n",
+//                            Toast.LENGTH_LONG).show();
+//                } finally {
+//                    if (db != null) {
+//                        db.close();
+//                    }
+//                    if (openHelper != null) {
+//                        openHelper.close();
+//                    }
+//                }
+//            }
+//        });
 
-                try {
-                    openHelper = new HelperDB(getApplicationContext());
-                    db = openHelper.getWritableDatabase();
-                    EditText nome = (EditText) findViewById(R.id.nome);
-                    EditText placa = (EditText) findViewById(R.id.placa);
-                    EditText celular = (EditText) findViewById(R.id.cel);
-                    EditText email = (EditText) findViewById(R.id.email);
-                    String n = nome.getText().toString();
-                    String strPlaca = placa.getText().toString();
-                    String c = celular.getText().toString();
-                    String e = email.getText().toString();
-                    if (n.isEmpty() || c.isEmpty() || e.isEmpty()) {
-                        Toast.makeText(getApplicationContext(),
-                                "Por favor, preencha os dados.", Toast.LENGTH_LONG).show();
-                    } else {
-                        ContentValues cv = new ContentValues();
-                        cv.put("nome", n);
-                        cv.put("placa", strPlaca);
-                        cv.put("celular", c);
-                        cv.put("email", e);
-                        long id = db.update("contatos", cv, "nome='" + n + "'", null);
-                        if (id == 0) {
-                            Toast.makeText(getApplicationContext(), "\nNão foi possível alterar\n",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                } catch (Exception ex) {
-                    Toast.makeText(getApplicationContext(), "\nErro processando o BD. \n",
-                            Toast.LENGTH_LONG).show();
-                } finally {
-                    if (db != null) {
-                        db.close();
-                    }
-                    if (openHelper != null) {
-                        openHelper.close();
-                    }
-                }
+        btnLimparCampos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                limparCampos();
             }
         });
+    }
 
-        btnExcluirTaxista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    openHelper = new HelperDB(getApplicationContext());
-                    db = openHelper.getWritableDatabase();
-                    EditText nome = (EditText) findViewById(R.id.nome);
-
-                    String n = nome.getText().toString();
-
-                    if (n.isEmpty()) {
-                        Toast.makeText(getApplicationContext(),
-                                "Por favor, preencha os dados.", Toast.LENGTH_LONG).show();
-                    } else {
-                        ContentValues cv = new ContentValues();
-                        cv.put("nome", n);
-
-                        long id = db.delete("contatos", "nome='" + n + "'", null);
-                        if (id == 0) {
-                            Toast.makeText(getApplicationContext(), "\nNão foi possível excluir\n",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                } catch (Exception ex) {
-                    Toast.makeText(getApplicationContext(), "\nErro processando o BD. \n",
-                            Toast.LENGTH_LONG).show();
-                } finally {
-                    if (db != null) {
-                        db.close();
-                    }
-                    if (openHelper != null) {
-                        openHelper.close();
-                    }
-                }
-            }
-        });
+    void limparCampos() {
+        edtNome.setText("");
+        edtPlaca.setText("");
+        edtCelular.setText("");
+        edtEmail.setText("");
     }
 }
