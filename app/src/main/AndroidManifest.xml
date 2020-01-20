@@ -50,6 +50,10 @@
             android:label="Combustível"
             android:parentActivityName=".view.MainActivity" />
         <activity
+            android:name=".view.DetranActivity"
+            android:label="Detran"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
             android:name=".view.SobreActivity"
             android:label="Sobre"
             android:parentActivityName=".view.MainActivity" />

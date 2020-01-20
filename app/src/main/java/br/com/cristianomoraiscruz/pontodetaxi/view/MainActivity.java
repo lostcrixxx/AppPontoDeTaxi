@@ -106,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
         btnDetran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção...", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), DetranActivity.class);
+                startActivity(i);
+//                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção...", Toast.LENGTH_SHORT).show();
             }
         });
 
