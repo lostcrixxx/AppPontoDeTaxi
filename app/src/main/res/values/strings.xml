@@ -29,7 +29,6 @@
     <string name="close">Fechar</string>
 
     <string-array name="ufs">
-        <item />
         <item>AC</item>
         <item>AL</item>
         <item>AM</item>
