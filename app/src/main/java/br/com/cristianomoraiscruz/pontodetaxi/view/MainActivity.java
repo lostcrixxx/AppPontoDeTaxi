@@ -56,12 +56,6 @@ public class MainActivity extends AppCompatActivity {
         btnConfig = findViewById(R.id.btnConfig);
         btnSobre = findViewById(R.id.btnSobre);
 
-        prefs = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
-        txtNPonto.setText(prefs.getString("nPonto", "Configure o N. do Ponto"));
-
-        String num = String.valueOf(db.getTaxistasCount(this));
-        txtQtdTaxista.setText( num + " taxistas");
-
         btnTaxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +123,16 @@ public class MainActivity extends AppCompatActivity {
 //                Toast.makeText(getApplication(), "Click: Sobre", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        prefs = getSharedPreferences("preferencias", Context.MODE_PRIVATE);
+        txtNPonto.setText(prefs.getString("nPonto", "Configure o N. do Ponto"));
+
+        String num = String.valueOf(db.getTaxistasCount(this));
+        txtQtdTaxista.setText( num + " taxistas");
     }
 
     @Override
