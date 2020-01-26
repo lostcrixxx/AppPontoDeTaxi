@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Gerenciamento");
         Sentry.init("https://90f47a878600458da2399094332392d0@sentry.io/1795712", new AndroidSentryClientFactory(this));
 
 
@@ -84,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
         btnGrafico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção... ", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), GraphicActivity.class);
+                startActivity(i);
+//                Toast.makeText(getApplication(), "Desculpe! Função em processo de manutenção... ", Toast.LENGTH_SHORT).show();
             }
         });
 
