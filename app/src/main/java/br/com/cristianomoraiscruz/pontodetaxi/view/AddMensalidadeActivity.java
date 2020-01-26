@@ -17,30 +17,35 @@ import br.com.cristianomoraiscruz.pontodetaxi.R;
 import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 
+import static br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB.TAB_MENSALIDADE;
+
 public class AddMensalidadeActivity extends AppCompatActivity {
 
-    EditText edtNome, edtDate, edtValor;
+    EditText edtNome, edtData, edtValor;
     String lblNome, lblDate, lblCelular;
     Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista, btnLimparCampos;
 
-    HelperDB openHelper = null; // a classe derivada de SQLiteOpenHelper
+    HelperDB openHelper = null;
     SQLiteDatabase db = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mensalidade);
+
+        edtNome = (EditText) findViewById(R.id.edt_mensa_nome);
+        edtData = (EditText) findViewById(R.id.edt_mensa_data);
+        edtValor = (EditText) findViewById(R.id.edt_mensa_valor);
+
         btnInserirTaxista = findViewById(R.id.btnInserirTaxista);
 //        btnAlterarTaxista = findViewById(R.id.btnAlterarTaxista);
 //        btnExcluirTaxista = findViewById(R.id.btnExcluirTaxista);
         btnLimparCampos = findViewById(R.id.btnLimparCampos);
 
-        edtDate = (EditText) findViewById(R.id.data_mensalidade);
-
         createMensalidade(); // insert, update and delete
 
-        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_DATE, edtDate);
-        edtDate.addTextChangedListener(ibanMaskFormatter1);
+        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_DATE, edtData);
+        edtData.addTextChangedListener(ibanMaskFormatter1);
     }
 
     public void createMensalidade() {
@@ -50,11 +55,9 @@ public class AddMensalidadeActivity extends AppCompatActivity {
                 try {
                     openHelper = new HelperDB(getApplicationContext());
                     db = openHelper.getWritableDatabase();
-                    edtNome = (EditText) findViewById(R.id.nome);
-                    edtDate = (EditText) findViewById(R.id.placa);
-                    edtValor = (EditText) findViewById(R.id.cel);
+
                     lblNome = edtNome.getText().toString();
-                    lblDate = edtDate.getText().toString();
+                    lblDate = edtData.getText().toString();
                     lblCelular = edtValor.getText().toString();
                     if (lblNome.isEmpty() || lblCelular.isEmpty()) {
                         Toast.makeText(getApplicationContext(),
@@ -64,13 +67,13 @@ public class AddMensalidadeActivity extends AppCompatActivity {
                         cv.put("nome", lblNome);
                         cv.put("data", lblDate);
                         cv.put("valor", lblCelular);
-                        long id = db.insert("mensalidade", null, cv);
+                        long id = db.insert(TAB_MENSALIDADE, null, cv);
                         Log.d("AddMensalidadeActivity", "teste db value id: " + id);
                         if (id > 0) {
                             Toast.makeText(getApplicationContext(), "Mensalidade cadastrada com sucesso!",
                                     Toast.LENGTH_LONG).show();
                             edtNome.setText("");
-                            edtDate.setText("");
+                            edtData.setText("");
                             edtValor.setText("");
                         } else if (id == -1) {
                             Toast.makeText(getApplicationContext(), "Não foi possível inserir. Nome duplicado!",
@@ -184,7 +187,7 @@ public class AddMensalidadeActivity extends AppCompatActivity {
 
     void limparCampos(){
         edtNome.setText("");
-        edtDate.setText("");
+        edtData.setText("");
         edtValor.setText("");
     }
 }

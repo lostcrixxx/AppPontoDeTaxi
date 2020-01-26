@@ -17,13 +17,17 @@ import br.com.cristianomoraiscruz.pontodetaxi.R;
 import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 
+import static br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB.TAB_CONTA;
+
 public class AddDespesasActivity extends AppCompatActivity {
+
+    private static final String TAG = "AddMensalidadeActivity";
 
     EditText edtNome, edtDate, edtValor;
     String lblNome, lblDate, lblValor;
     Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista, btnLimparCampos;
 
-    HelperDB openHelper = null; // a classe derivada de SQLiteOpenHelper
+    HelperDB openHelper = null;
     SQLiteDatabase db = null;
 
     @Override
@@ -64,10 +68,10 @@ public class AddDespesasActivity extends AppCompatActivity {
                         cv.put("nome", lblNome);
                         cv.put("data", lblDate);
                         cv.put("valor", lblValor);
-                        long id = db.insert("mensalidade", null, cv);
-                        Log.d("AddMensalidadeActivity", "teste db value id: " + id);
+                        long id = db.insert(TAB_CONTA, null, cv);
+                        Log.d(TAG, "teste db value id: " + id);
                         if (id > 0) {
-                            Toast.makeText(getApplicationContext(), "Mensalidade cadastrada com sucesso!",
+                            Toast.makeText(getApplicationContext(), "Despesa cadastrada com sucesso!",
                                     Toast.LENGTH_LONG).show();
                             edtNome.setText("");
                             edtDate.setText("");
@@ -78,7 +82,7 @@ public class AddDespesasActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(getApplicationContext(), "Não foi possível inserir. Erro!",
                                     Toast.LENGTH_LONG).show();
-                            Log.e("AddMensalidadeActivity", "Erro ao inserir Mensalidade");
+                            Log.e("AddMensalidadeActivity", "Erro ao inserir despesa");
                         }
                     }
                 } catch (Exception ex) {

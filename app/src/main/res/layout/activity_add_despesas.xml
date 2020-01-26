@@ -97,14 +97,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnInserirTaxista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inserir" />
+            android:text="Inserir"
+            android:layout_marginEnd="10dp"/>
 
 <!--        <Button-->
 <!--            android:id="@+id/btnAlterarTaxista"-->
@@ -122,6 +123,7 @@
             android:id="@+id/btnLimparCampos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Limpar" />
 
         <!--<Button-->

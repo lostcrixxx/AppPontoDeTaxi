@@ -81,7 +81,7 @@ public class GraphicActivity extends AppCompatActivity{
 
     private ArrayList<BarEntry>barEntries2(){
         ArrayList<BarEntry>barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(1, 2000));
+        barEntries.add(new BarEntry(1, valueDespesa));
 
         return barEntries;
     }

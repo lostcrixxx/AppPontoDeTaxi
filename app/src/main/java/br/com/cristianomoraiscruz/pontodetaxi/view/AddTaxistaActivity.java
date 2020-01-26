@@ -21,6 +21,8 @@ import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 import br.com.cristianomoraiscruz.pontodetaxi.R;
 
+import static br.com.cristianomoraiscruz.pontodetaxi.controller.Utils.validarPlaca;
+
 public class AddTaxistaActivity extends AppCompatActivity {
 
     EditText edtNome, edtPlaca, edtCelular, edtEmail;
@@ -115,6 +117,8 @@ public class AddTaxistaActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Por favor, preencha os dados.", Toast.LENGTH_LONG).show();
                     } else {
+                        validarPlaca(lblPlaca);
+
                         ContentValues cv = new ContentValues();
                         cv.put("nome", lblNome);
                         cv.put("placa", lblPlaca);
@@ -134,7 +138,7 @@ public class AddTaxistaActivity extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                             Log.e("AddTaxistaActivity", "Erro ao inserir Taxista");
                         }
-                    }
+                                            }
                 } catch (Exception ex) {
                     Toast.makeText(getApplicationContext(), "\nErro processando o BD. \n",
                             Toast.LENGTH_LONG).show();
