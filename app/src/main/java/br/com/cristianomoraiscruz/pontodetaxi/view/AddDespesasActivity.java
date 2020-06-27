@@ -6,15 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.azimolabs.maskformatter.MaskFormatter;
+import com.google.android.material.textfield.TextInputEditText;
 
 import br.com.cristianomoraiscruz.pontodetaxi.R;
-import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
+import br.com.cristianomoraiscruz.pontodetaxi.controller.MaskWatcher;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 
 import static br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB.TAB_CONTA;
@@ -23,7 +22,7 @@ public class AddDespesasActivity extends AppCompatActivity {
 
     private static final String TAG = "AddMensalidadeActivity";
 
-    EditText edtNome, edtDate, edtValor;
+    TextInputEditText edtNome, edtDate, edtValor;
     String lblNome, lblDate, lblValor;
     Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista, btnLimparCampos;
 
@@ -39,12 +38,12 @@ public class AddDespesasActivity extends AppCompatActivity {
 //            btnExcluirTaxista = findViewById(R.id.btnExcluirTaxista);
         btnLimparCampos = findViewById(R.id.btnLimparCampos);
 
-        edtDate = (EditText) findViewById(R.id.placa);
+        edtDate = findViewById(R.id.data);
 
         createMensalidade(); // insert, update and delete
 
-        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_DATE, edtDate);
-        edtDate.addTextChangedListener(ibanMaskFormatter1);
+        // Mask field
+        edtDate.addTextChangedListener(MaskWatcher.buildData());
     }
 
     public void createMensalidade() {
@@ -54,9 +53,9 @@ public class AddDespesasActivity extends AppCompatActivity {
                 try {
                     openHelper = new HelperDB(getApplicationContext());
                     db = openHelper.getWritableDatabase();
-                    edtNome = (EditText) findViewById(R.id.nome);
-                    edtDate = (EditText) findViewById(R.id.placa);
-                    edtValor = (EditText) findViewById(R.id.cel);
+                    edtNome = findViewById(R.id.nome);
+                    edtDate = findViewById(R.id.data);
+                    edtValor = findViewById(R.id.cel);
                     lblNome = edtNome.getText().toString();
                     lblDate = edtDate.getText().toString();
                     lblValor = edtValor.getText().toString();

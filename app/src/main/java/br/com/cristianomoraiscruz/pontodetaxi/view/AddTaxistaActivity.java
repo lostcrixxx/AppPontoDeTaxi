@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,19 +11,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.azimolabs.maskformatter.MaskFormatter;
+import com.google.android.material.textfield.TextInputEditText;
 
-import java.text.ParseException;
-
-import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
-import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 import br.com.cristianomoraiscruz.pontodetaxi.R;
+import br.com.cristianomoraiscruz.pontodetaxi.controller.MaskWatcher;
+import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 
 import static br.com.cristianomoraiscruz.pontodetaxi.controller.Utils.validarPlaca;
 
 public class AddTaxistaActivity extends AppCompatActivity {
 
-    EditText edtNome, edtPlaca, edtCelular, edtEmail;
+    TextInputEditText edtNome, edtPlaca, edtCelular, edtEmail;
     String lblNome, lblPlaca, lblCelular, lblEmail;
     Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista, btnLimparCampos;
 
@@ -42,17 +38,16 @@ public class AddTaxistaActivity extends AppCompatActivity {
 //        btnExcluirTaxista = findViewById(R.id.btnExcluirTaxista);
         btnLimparCampos = findViewById(R.id.btnLimparCampos);
 
-        edtNome = (EditText) findViewById(R.id.nomeTaxista);
-        edtCelular = (EditText) findViewById(R.id.celTaxista);
-        edtPlaca = (EditText) findViewById(R.id.placaTaxista);
-        edtEmail = (EditText) findViewById(R.id.emailTaxista);
+        edtNome = findViewById(R.id.nomeTaxista);
+        edtCelular = findViewById(R.id.celTaxista);
+        edtPlaca = findViewById(R.id.placaTaxista);
+        edtEmail = findViewById(R.id.emailTaxista);
 
         createTaxista(); // insert, update and delete
 
-        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_PHONE, edtCelular);
-        MaskFormatter ibanMaskFormatter2 = new MaskFormatter(Constants.MASK_PLAQUE, edtPlaca);
-        edtCelular.addTextChangedListener(ibanMaskFormatter1);
-        edtPlaca.addTextChangedListener(ibanMaskFormatter2);
+        // Mask field
+        edtCelular.addTextChangedListener(MaskWatcher.buildCel());
+        edtPlaca.addTextChangedListener(MaskWatcher.buildPlaca());
     }
 
     public void savePonto(View v) {

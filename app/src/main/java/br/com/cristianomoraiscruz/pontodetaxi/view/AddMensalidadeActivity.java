@@ -1,27 +1,26 @@
 package br.com.cristianomoraiscruz.pontodetaxi.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.azimolabs.maskformatter.MaskFormatter;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import br.com.cristianomoraiscruz.pontodetaxi.R;
-import br.com.cristianomoraiscruz.pontodetaxi.controller.Constants;
+import br.com.cristianomoraiscruz.pontodetaxi.controller.MaskWatcher;
 import br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB;
 
 import static br.com.cristianomoraiscruz.pontodetaxi.database.HelperDB.TAB_MENSALIDADE;
 
 public class AddMensalidadeActivity extends AppCompatActivity {
 
-    EditText edtNome, edtData, edtValor;
+    TextInputEditText edtNome, edtData, edtValor;
     String lblNome, lblDate, lblCelular;
     Button btnInserirTaxista, btnAlterarTaxista, btnExcluirTaxista, btnLimparCampos;
 
@@ -33,9 +32,9 @@ public class AddMensalidadeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mensalidade);
 
-        edtNome = (EditText) findViewById(R.id.edt_mensa_nome);
-        edtData = (EditText) findViewById(R.id.edt_mensa_data);
-        edtValor = (EditText) findViewById(R.id.edt_mensa_valor);
+        edtNome = findViewById(R.id.edt_mensa_nome);
+        edtData = findViewById(R.id.edt_mensa_data);
+        edtValor = findViewById(R.id.edt_mensa_valor);
 
         btnInserirTaxista = findViewById(R.id.btnInserirTaxista);
 //        btnAlterarTaxista = findViewById(R.id.btnAlterarTaxista);
@@ -44,8 +43,8 @@ public class AddMensalidadeActivity extends AppCompatActivity {
 
         createMensalidade(); // insert, update and delete
 
-        MaskFormatter ibanMaskFormatter1 = new MaskFormatter(Constants.MASK_DATE, edtData);
-        edtData.addTextChangedListener(ibanMaskFormatter1);
+        // Mask field
+        edtData.addTextChangedListener(MaskWatcher.buildData());
     }
 
     public void createMensalidade() {
